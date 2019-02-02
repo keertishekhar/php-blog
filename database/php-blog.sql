@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2019 at 09:08 AM
+-- Generation Time: Feb 02, 2019 at 07:42 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -25,14 +25,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_data`
+-- Table structure for table `posts`
 --
 
-CREATE TABLE `post_data` (
+CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `discription` varchar(500) NOT NULL
+  `user_id` int(11) DEFAULT NULL,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `is_published` int(11) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `user_id`, `title`, `description`, `is_published`, `created_at`) VALUES
+(1, NULL, 'fasdfsd', 'fsdf', 1, '2019-02-02 22:23:37');
 
 -- --------------------------------------------------------
 
@@ -70,9 +80,9 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `gender
 --
 
 --
--- Indexes for table `post_data`
+-- Indexes for table `posts`
 --
-ALTER TABLE `post_data`
+ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -86,10 +96,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `post_data`
+-- AUTO_INCREMENT for table `posts`
 --
-ALTER TABLE `post_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
