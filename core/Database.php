@@ -47,4 +47,12 @@ class Database extends Table{
 
         return false;
     }
+    public function queury($query){
+
+        $result = $this->database->query($query);
+
+        if($result->num_rows){
+            return $result->fetch_all();
+        }
+    }
 }

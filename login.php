@@ -22,9 +22,9 @@ if($user)
 {
 
     if($auth->login($user)){
-session_start();
-$_SESSION['user'] = $user;
 
+       // session_start();
+       // $_SESSION['user'] = $user;
         header('location: profile.php');
         return;
     }
