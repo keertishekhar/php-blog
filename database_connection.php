@@ -1,5 +1,5 @@
 <?php  
-$dbcon= new mysqli("localhost","root","","php-auth");
+$dbcon = new mysqli("localhost","root","","php-auth");
 
 
 

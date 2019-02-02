@@ -1,7 +1,7 @@
 <?php
 
-require_once "database_connection.php";
 require_once __DIR__.'/core/Auth.php'; 
+require_once __DIR__.'/core/User.php';
 
 $auth = new Auth;
 
@@ -14,12 +14,16 @@ if(isset($_GET['action']) && $_GET['action'] == 'logout'){
 $email= $_POST['email'];
 $password= $_POST['password'];
 
-$user=$dbcon->query("SELECT * FROM users WHERE email='$email'AND `password`='$password'");
+$userModel = new User;
 
-if($user->num_rows)
+$user = $userModel->get_where(['email' => $email,'password' => $password]);
+
+if($user)
 {
-    
-    if($auth->login($user->fetch_assoc())){
+
+    if($auth->login($user)){
+session_start();
+$_SESSION['user'] = $user;
 
         header('location: profile.php');
         return;

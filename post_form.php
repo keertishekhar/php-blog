@@ -1,4 +1,12 @@
-<!DOCTYPE <!DOCTYPE html>
+<?php 
+require_once __DIR__.'/core/Auth.php';
+
+if((new Auth)->isGuest()){
+	header('Location:login_form.php');
+	return;
+}
+?>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />

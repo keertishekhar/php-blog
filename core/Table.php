@@ -2,11 +2,14 @@
 
 class Table{
 
-    public function columns($data, $isColumn  = false){
+    public function columns($data, $isColumn  = false, $separator = null){
 
         $columns = $isColumn?array_keys($data):array_values($data);
 
-        $separator = $isColumn?',':'","';
+        if(is_null($separator)){
+
+            $separator = $isColumn?',':'","';
+        }
 
         $columns = implode($separator, $columns);
 

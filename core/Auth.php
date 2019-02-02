@@ -12,6 +12,12 @@ class Auth extends Session {
         return $this->set('user', $user);
     }
 
+    public function id(){
+        if($user = $this->get('user')){
+            return $user['id'];
+        }
+    }
+
     public function logout(){
         $this->distroy('user');
     }
@@ -28,4 +34,3 @@ class Auth extends Session {
         return $this->hasKey('user') == true;
     }
 }
-

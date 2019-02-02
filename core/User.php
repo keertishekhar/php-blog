@@ -14,4 +14,8 @@ class User extends Database{
         return $this->insert($data);
     }
 
+    public function get_where($data, $columns = '*'){
+        return $this->select($data, $columns);
+    }
+
 }

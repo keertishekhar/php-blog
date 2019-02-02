@@ -1,22 +1,25 @@
-
 <?php 
 require_once __DIR__.'/core/Auth.php';
-$auth = new Auth;
 
-echo '<pre>'; print_r($auth->user()); 
+if((new Auth)->isGuest()){
+	header('Location:login_form.php');
+	return;
+}
+
+require_once __DIR__.'/views/common/header.php';
+ 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div id="login_container">
-  <center><h2>welcome to profile page
-    <a href="login.php?action=logout">Log out</a></h2></center>
+<div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
+        <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
+        <ul class="list-unstyled">
+          <li>Bootstrap 4.2.1</li>
+          <li>jQuery 3.3.1</li>
+        </ul>
+      </div>
     </div>
-</body>
-</html>
+
+    
+
+<?php require_once __DIR__.'/views/common/footer.php'; ?>

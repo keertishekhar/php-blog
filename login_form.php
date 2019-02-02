@@ -1,3 +1,11 @@
+<?php 
+require_once __DIR__.'/core/Auth.php';
+
+if((new Auth)->isUser()){
+	header('Location:profile.php');
+	return;
+}
+?>
 <!DOCTYPE html>
 <head></head>
 <body>

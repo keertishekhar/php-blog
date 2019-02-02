@@ -6,14 +6,15 @@ require_once __DIR__.'/core/Auth.php';
 
 $postModel = new Post;
 $auth = new Auth;
+
 $data = [
     'title' => $_POST['title'],
     'description' => $_POST['description'],
-    //'user_id' => $usertModel->user()
+    'user_id' => $auth->id()
 ];
-
-print_r($auth->user()); die;
 
 $postModel->create($data);
 
+header('Location:post_form.php');
+return;
 ?>
